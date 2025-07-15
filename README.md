@@ -8,11 +8,43 @@
 ## 🔗 Links
 
 - **GitHub Repository**: [(https://github.com/RaniJames17/stock-market)]
-- **Deployed Application**: [Add your Netlify/Vercel link here]
+- **Deployed Application**: [Add your Netlify link here]
 
 ## 📋 Assignment Overview
 
 This React application uses Brain.js to predict stock market prices through a feedforward neural network. The app demonstrates understanding of HTML, CSS, JavaScript, React, and Brain.js by implementing a complete stock price prediction system that meets all assignment requirements.
+
+## 🚀 Deployment
+
+### Netlify Deployment (Current)
+
+This app is configured for deployment on Netlify. The configuration includes:
+
+- **Build Command**: `npm run build`
+- **Publish Directory**: `build`
+- **SPA Redirects**: Configured for React Router
+- **Environment**: Node.js 18, npm 9
+- **Security Headers**: XSS protection, frame options, content type options
+- **Caching**: Optimized for static assets and build artifacts
+
+#### Deploy to Netlify:
+
+1. **Via Git Integration**:
+   - Connect your GitHub repository to Netlify
+   - Netlify will auto-deploy on commits to main branch
+   - Build settings are configured in `netlify.toml`
+
+2. **Manual Deploy**:
+   ```bash
+   npm run build
+   # Then drag and drop the 'build' folder to Netlify
+   ```
+
+3. **Netlify CLI** (optional):
+   ```bash
+   npm install -g netlify-cli
+   netlify deploy --dir=build --prod
+   ```
 
 
 ## 🛠️ Installation and Setup
