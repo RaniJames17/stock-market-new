@@ -5,12 +5,20 @@
 Your stock market prediction app is now configured for Netlify deployment. Here are the deployment options:
 
 ### Option 1: Git Integration (Recommended)
-1. Push your code to a GitHub repository
-2. Go to [Netlify](https://app.netlify.com/)
-3. Click "New site from Git"
-4. Connect your GitHub repository
-5. Netlify will automatically detect the settings from `netlify.toml`
-6. Click "Deploy site"
+1. **Commit all changes** to your repository:
+   ```bash
+   git add .
+   git commit -m "Fix Netlify deployment configuration"
+   git push origin main
+   ```
+2. Push your code to a GitHub repository
+3. Go to [Netlify](https://app.netlify.com/)
+4. Click "New site from Git"
+5. Connect your GitHub repository
+6. Netlify will automatically detect the settings from `netlify.toml`
+7. Click "Deploy site"
+
+**Note**: The build configuration now handles deprecation warnings automatically.
 
 ### Option 2: Drag & Drop
 1. Run `npm run build` in your project directory
@@ -31,13 +39,20 @@ Your stock market prediction app is now configured for Netlify deployment. Here 
 
 ## Build Command
 ```bash
-npm run build
+npm install --loglevel=error --no-audit --no-fund && npm run build
 ```
 
 ## Publish Directory
 ```
 build
 ```
+
+## Build Configuration
+The build is configured to handle deprecation warnings:
+- **npm install flags**: `--loglevel=error --no-audit --no-fund` to suppress warnings
+- **Environment variables**: Set to treat warnings as non-fatal
+- **Memory allocation**: Increased for large builds
+- **Source maps**: Disabled for faster builds
 
 ## Environment Variables
 If you need to add environment variables:
@@ -57,6 +72,28 @@ After deployment, you can:
 - Configure a custom domain in Site settings → Domain management
 
 ## Troubleshooting
-- If you encounter build errors, check Node.js version compatibility
-- Ensure all dependencies are properly installed
-- Check the Netlify build logs for specific error messages
+
+### Build Errors
+- **Deprecated package warnings**: These are handled automatically by the build configuration
+- **Node.js version**: Ensure you're using Node.js 18 (configured in netlify.toml)
+- **Memory issues**: Build is configured with increased memory allocation
+
+### Common Solutions
+1. **If build fails with dependency warnings**:
+   - The build is configured to treat warnings as non-fatal
+   - Environment variables are set to suppress unnecessary warnings
+   - Build command uses `npm ci --silent` for cleaner output
+
+2. **If you encounter module resolution errors**:
+   - Check that all dependencies are listed in `package.json`
+   - Verify that the lock file (`package-lock.json`) is committed to the repository
+
+3. **Build timeout issues**:
+   - The build is configured with increased memory allocation
+   - Source maps are disabled to speed up the build
+
+### Build Configuration Files
+- **netlify.toml**: Main configuration with build settings
+- **.env**: Environment variables for React build
+- **.npmrc**: npm configuration to suppress warnings
+- **package.json**: Updated build script with CI=false

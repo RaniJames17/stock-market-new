@@ -1,6 +1,6 @@
 # Netlify configuration for deployment
 [build]
-  command = "npm run build"
+  command = "npm install --loglevel=error --no-audit --no-fund && npm run build"
   publish = "build"
 
 # SPA redirect for React Router
@@ -14,6 +14,9 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   CI = "false"
+  NODE_OPTIONS = "--max-old-space-size=4096"
+  SKIP_PREFLIGHT_CHECK = "true"
+  GENERATE_SOURCEMAP = "false"
 
 # Headers for security and performance
 [[headers]]
