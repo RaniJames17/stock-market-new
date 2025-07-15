@@ -7,7 +7,7 @@
 
 ## 🔗 Links
 
-- **GitHub Repository**: [Add your repo link here]
+- **GitHub Repository**: [(https://github.com/RaniJames17/stock-market)]
 - **Deployed Application**: [Add your Netlify/Vercel link here]
 
 ## 📋 Assignment Overview
@@ -25,7 +25,7 @@ This React application uses Brain.js to predict stock market prices through a fe
 
 1. **Clone the repository**:
 ```bash
-git clone [your-repository-url]
+git clone [https://github.com/RaniJames17/stock-market]
 cd stock-market
 ```
 
@@ -126,61 +126,6 @@ Input Layer (5 neurons) → Hidden Layer (3 neurons) → Hidden Layer (3 neurons
 - **Chart.js** (^4.4.0): Data visualization
 - **react-chartjs-2** (^5.2.0): React wrapper for Chart.js
 
-
-## 🎯 Usage Instructions
-
-### 1. Data Input
-- **Manual Entry**: Add individual data points using the form
-- **Sample Data**: Click the magic wand icon to generate test data
-
-### 2. Model Training
-- Ensure you have at least 50 data points
-- Click "Train & Predict" to start the neural network training
-- Wait for training completion (progress indicators provided)
-
-### 3. View Results
-- **Predictions Panel**: Shows next 5 days with confidence scores
-- **Chart**: Visual representation of historical vs predicted data
-- **Trend Analysis**: Color-coded indicators for price movements
-
-## 🚀 Deployment Instructions
-
-### Deploy to Netlify
-1. Build the project: `npm run build`
-2. Upload the `build` folder to Netlify
-3. Configure build settings:
-   - Build command: `npm run build`
-   - Publish directory: `build`
-
-### Deploy to Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
-4. Build command: `npm run build`
-5. Output directory: `build`
-
-## ⚠️ Important Notes
-
-### Academic Integrity
-- All code is original work
-- External libraries used are properly documented
-- Neural network implementation follows Brain.js best practices
-
-### Limitations
-- **Educational Purpose**: This app is for learning and demonstration
-- **Not Financial Advice**: Predictions should not be used for actual trading
-- **Market Complexity**: Real markets are influenced by many factors not captured in this simple model
-
-### Assignment Compliance
-- ✅ Minimum 50 data points enforced
-- ✅ Brain.js feedforward network implemented
-- ✅ Chart.js visualization with clear data differentiation
-- ✅ Responsive React UI with proper component structure
-- ✅ File upload and manual data entry supported
-- ✅ Comprehensive documentation provided
-
-## 🔧 Technical Implementation Details
-
 ### Component Structure
 ```
 src/
@@ -193,33 +138,3 @@ src/
 ├── App.js                     # Main application logic
 └── index.js                   # React entry point
 ```
-
-### State Management
-- React hooks for local state
-- Props for component communication
-- Centralized state in main App component
-
-### Error Handling
-- File upload validation
-- Data format verification
-- Model training error handling
-- User-friendly error messages
-
-## 📈 Future Enhancements
-
-- Real-time stock data API integration
-- Multiple prediction models (LSTM, ARIMA)
-- Technical indicators (RSI, MACD)
-- Portfolio analysis features
-- Historical model performance tracking
-
-## 👨‍💻 Author
-
-**[Your Name]**  
-Student ID: [Your Student ID]  
-Course: [Course Name]  
-Institution: [Your Institution]  
-
----
-
-*This project was developed as part of Assignment 4 for the course requirements, demonstrating proficiency in React, Brain.js, and modern web development practices.*
