@@ -11,7 +11,7 @@
 
 # Build environment variables
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "18.20.4"
   NPM_VERSION = "9"
   CI = "false"
   NODE_OPTIONS = "--max-old-space-size=4096"

@@ -6,10 +6,15 @@ This file contains the latest build configuration updates to fix Netlify deploym
 
 1. **Updated netlify.toml**:
    - Modified build command to suppress npm warnings
+   - **Fixed Node.js version to 18.20.4 LTS** (was causing build failures)
    - Added environment variables to handle deprecation warnings
    - Increased memory allocation for build process
 
-2. **Updated .env file**:
+2. **Created .nvmrc**:
+   - **Specifies Node.js 18.20.4 LTS** for consistent builds
+   - Ensures Netlify uses a valid, stable Node.js version
+
+3. **Updated .env file**:
    - Added CI=false to treat warnings as non-fatal
    - Added NODE_OPTIONS for memory allocation
    - Configured build optimizations
