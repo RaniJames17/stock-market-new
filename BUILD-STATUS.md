@@ -5,16 +5,23 @@ This file contains the latest build configuration updates to fix Netlify deploym
 ## Changes Made:
 
 1. **Updated netlify.toml**:
-   - Modified build command to suppress npm warnings
+   - Modified build command to use `npm ci` for consistent installs
    - **Fixed Node.js version to 18.20.4 LTS** (was causing build failures)
+   - **Updated npm version to 10** (matches Node.js 18.20.4 default)
    - Added environment variables to handle deprecation warnings
+   - **Added browser download skip flags** to prevent unnecessary downloads
    - Increased memory allocation for build process
 
-2. **Created .nvmrc**:
+2. **Fixed Native Dependencies**:
+   - **Removed gl package** from devDependencies (was causing gyp build failures)
+   - gl package requires X11 system libraries not available in Netlify environment
+   - Build now works without native compilation issues
+
+3. **Created .nvmrc**:
    - **Specifies Node.js 18.20.4 LTS** for consistent builds
    - Ensures Netlify uses a valid, stable Node.js version
 
-3. **Updated .env file**:
+4. **Updated .env file**:
    - Added CI=false to treat warnings as non-fatal
    - Added NODE_OPTIONS for memory allocation
    - Configured build optimizations
@@ -34,7 +41,12 @@ This file contains the latest build configuration updates to fix Netlify deploym
 - Build will treat warnings as non-fatal
 - Memory allocation is increased for large builds
 - Source maps are disabled for faster builds
+- **No native compilation errors** (gl package removed)
+- **npm version matches Node.js version** (no version conflicts)
+- **Uses npm ci for consistent dependency installation**
 
 ## Testing:
 - Local build works: ✅
+- Dependencies install without errors: ✅
+- No native compilation issues: ✅
 - Ready for Netlify deployment: ✅

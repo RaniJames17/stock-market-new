@@ -40,7 +40,7 @@ Your stock market prediction app is now configured for Netlify deployment. Here 
 
 ## Build Command
 ```bash
-npm install --loglevel=error --no-audit --no-fund && npm run build
+npm ci --production=false --loglevel=error --no-audit --no-fund && npm run build
 ```
 
 ## Publish Directory
@@ -49,11 +49,13 @@ build
 ```
 
 ## Build Configuration
-The build is configured to handle deprecation warnings:
+The build is configured to handle common deployment issues:
+- **npm ci**: Uses lock file for consistent installs
 - **npm install flags**: `--loglevel=error --no-audit --no-fund` to suppress warnings
 - **Environment variables**: Set to treat warnings as non-fatal
 - **Memory allocation**: Increased for large builds
 - **Source maps**: Disabled for faster builds
+- **Native dependencies**: Removed problematic gl package for Netlify compatibility
 
 ## Environment Variables
 If you need to add environment variables:
@@ -77,24 +79,32 @@ After deployment, you can:
 ### Build Errors
 - **Deprecated package warnings**: These are handled automatically by the build configuration
 - **Node.js version**: Using Node.js 18.20.4 LTS (configured in netlify.toml and .nvmrc)
+- **npm version**: Using npm 10 (matches Node.js 18.20.4 default)
+- **Native dependencies**: Removed gl package that required system libraries not available in Netlify
 - **Memory issues**: Build is configured with increased memory allocation
 
 ### Common Solutions
 1. **If build fails with Node.js version issues**:
    - The build uses Node.js 18.20.4 LTS (specified in .nvmrc and netlify.toml)
+   - npm version is set to 10 (matches Node.js 18.20.4 default)
    - This is a stable, tested version that works with React and the dependencies
    - Netlify will automatically use this version during build
 
-2. **If build fails with dependency warnings**:
+2. **If build fails with native dependency issues**:
+   - Removed gl package from devDependencies (caused gyp build failures)
+   - Added environment variables to skip browser downloads
+   - Uses npm ci for consistent dependency installation
+
+3. **If build fails with dependency warnings**:
    - The build is configured to treat warnings as non-fatal
    - Environment variables are set to suppress unnecessary warnings
-   - Build command uses `npm ci --silent` for cleaner output
+   - Build command uses `npm ci` for consistent dependency installation
 
-2. **If you encounter module resolution errors**:
+4. **If you encounter module resolution errors**:
    - Check that all dependencies are listed in `package.json`
    - Verify that the lock file (`package-lock.json`) is committed to the repository
 
-3. **Build timeout issues**:
+5. **Build timeout issues**:
    - The build is configured with increased memory allocation
    - Source maps are disabled to speed up the build
 
